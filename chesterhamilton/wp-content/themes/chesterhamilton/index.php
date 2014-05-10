@@ -168,8 +168,6 @@ get_header(); ?>
                                 <div class="hover">
                                     <h5><?php the_title();?></h5>
                                     <p>Demolition</p>
-
-
                                     <a href="<?php echo $url;?>" class="btn btn-default fancy" title="<?php echo get_post(get_post_thumbnail_id($post->ID))->post_title; ?>">View</a>
                                 </div>
                             </div>
