@@ -510,3 +510,13 @@ require get_template_directory() . '/inc/customizer.php';
 if ( ! class_exists( 'Featured_Content' ) && 'plugins.php' !== $GLOBALS['pagenow'] ) {
 	require get_template_directory() . '/inc/featured-content.php';
 }
+function new_excerpt_length($length){
+    return 50;
+}
+add_filter('excerpt_length','new_excerpt_length');
+function new_excerpt_more($more){
+    global $post;
+    return  ;
+}
+add_filter('excerpt_more','new_excerpt_more');
+

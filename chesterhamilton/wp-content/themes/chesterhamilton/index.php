@@ -76,15 +76,72 @@ get_header(); ?>
 
 <!-- About us -->
 <section id="about-us">
-    <?php
-    global $post;
-    $args = array('numb')
-    $page_id = 15;
-    $page_data = get_page( $page_id );
-    $content = apply_filters('the_content', $page_data->post_content);
-    echo $content;
-    ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <!-- Nav tabs -->
+                <ul class="tabs-left">
+                    <?php
+                    global $post;
+                    $args = array('numberposts'=>100, 'category'=>15);
+                    $page_id = 15;
+                    $custom_posts = get_posts($args);
+                    foreach($custom_posts as $post):setup_postdata($post);?>
+                        <li><a href="#<?php the_title();?>" data-toggle="tab"><?php the_title();?></a></li>
+                    <?php endforeach; wp_reset_postdata(); ?>
+                </ul>
+            </div><!-- .col -->
+            <script>
+                $(document).ready(function(){
+                   $('#about-us>div>div>div>div>div:first-child').addClass("active");
+                   $('#blog>div>div>div>div>div:first-child').addClass("active");
+                   $('#projects>div>div>div>div:first-child').addClass("active");
+                    $('.carousel-indicators>li:first-child').addClass("active");
+                });
+            </script>
+            <div class="col-sm-6 text-center">
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <?php
+                    global $post;
+                    $args = array('numberposts'=>100, 'category'=>15);
+                    $page_id = 15;
+                    $custom_posts = get_posts($args);
+                    foreach($custom_posts as $post):setup_postdata($post);?>
+                    <div class="tab-pane " id="<?php the_title();?>">
+                        <h1><small>OUR</small><?php the_title();?></h1>
+                        <p class="text-left"><?php the_excerpt();?></p>
+                        <a href="#" data-toggle="modal" data-target="#modal-<?php echo $post->ID;?>" class="btn btn-default btn-radius">
+                            Read More
+                        </a>
+                        <!-- modals -->
+                        <div id="modal-<?php echo $post->ID;?>" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <a href="#" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></a>
+                                        <h1><small>OUR</small><?php the_title();?></1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="niceScroll">
+                                           <?php the_content();?>
+                                            <?php
+                                                $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                                            ?>
+                                            <img src="<?php echo $url;?>" alt="//" class="sign pull-left" />
+                                        </div>
+                                    </div>
 
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                        <!-- end modals -->
+                    </div>
+                    <?php endforeach; wp_reset_postdata(); ?>
+                </div>
+            </div><!-- .col -->
+        </div><!-- .row -->
+    </div><!-- .container -->
 </section>
 <!-- end about us -->
 
@@ -190,11 +247,7 @@ get_header(); ?>
 
 
 <!-- Blog -->
-<script>
-    $(document).ready(function(){
-    $('#blog>div>div>div>div>div:first-child').addClass("active");
-    });
-</script>
+
 <section id="blog">
 <div class="container">
 
@@ -352,272 +405,34 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
 <div class="carousel-inner text-center">
 
 <!-- 8 items wall 01 -->
-<div class="item active" >
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
 
+    <?php
+    global $post;
+    $args = array('numberposts'=>100,'category'=>16);
+    $custom_posts = get_posts($args);
+    foreach($custom_posts  as $post) :setup_postdata($post);?>
+        <div class="item" >
+            <div class="row">
+                   <?php the_content();?>
             </div>
         </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/02.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/02.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/03.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/03.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/04.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/04.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/05.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/05.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/06.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/06.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/07.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/07.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+    <?php endforeach; wp_reset_postdata();?>
 <!-- 8 items wall 02 -->
-<div class="item">
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/02.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/02.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/03.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/03.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/04.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/04.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/05.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/05.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/06.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/06.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/07.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/07.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/08.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/08.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 8 items wall 03 -->
-<div class="item">
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/01.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/02.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/02.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/03.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/03.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/04.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/04.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/05.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/05.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/06.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/06.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/07.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/07.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-3">
-            <div class="item-project">
-                <img class="img-responsive" src="<?php echo get_template_directory_uri();?>/img/gallery/08.jpg" alt="" />
-                <div class="hover">
-                    <h5>WolfGang Puck</h5>
-                    <p>Demolition</p>
-                    <a href="<?php echo get_template_directory_uri();?>/img/gallery/08.jpg" class="btn btn-default fancy" title="Title of the Project">View</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 </div>
 <!-- end Wrapper for slides -->
-
 <ol class="carousel-indicators">
-    <li data-target="#slide-projects" data-slide-to="0" class="active">1</li>
-    <li data-target="#slide-projects" data-slide-to="1">2</li>
-    <li data-target="#slide-projects" data-slide-to="2">3</li>
+    <?php
+    global $post;
+    $args = array('numberposts'=>100,'category'=>16);
+    $custom_posts = get_posts($args);
+    $i=0;
+    $j=0;
+    foreach($custom_posts  as $post) :setup_postdata($post);?>
+    <li data-target="#slide-projects" data-slide-to="<?php echo $i;?>"><?php echo ++$j;?></li>
+       <?php  $i++; ?>
+    <?php endforeach; wp_reset_postdata();?>
 </ol>
+
 </div><!-- end carousel -->
 </div>
 </section>

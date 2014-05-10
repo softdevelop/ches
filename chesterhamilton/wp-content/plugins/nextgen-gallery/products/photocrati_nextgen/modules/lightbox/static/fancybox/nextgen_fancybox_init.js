@@ -1,8 +1,6 @@
 jQuery(function($) {
     var nextgen_fancybox_init = function() {
-    		var selector = nextgen_lightbox_filter_selector($, $(".ngg-fancybox"));
-    		
-        selector.fancybox({
+        $(".ngg-fancybox").fancybox({
             titlePosition: 'inside',
             // Needed for twenty eleven
             onComplete: function() {
