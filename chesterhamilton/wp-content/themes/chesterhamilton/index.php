@@ -77,7 +77,9 @@ get_header(); ?>
 <!-- About us -->
 <section id="about-us">
     <?php
-    $page_id = 4;
+    global $post;
+    $args = array('numb')
+    $page_id = 15;
     $page_data = get_page( $page_id );
     $content = apply_filters('the_content', $page_data->post_content);
     echo $content;
@@ -640,21 +642,20 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                         <div class="thumb">
                             <div class="frame img-circle">
                                 <?php
-                                $category = get_the_category();
-                              //  $mykey_values = get_post_custom_values( 'twitter',$post->ID );
-                                //foreach ( $mykey_values as $key => $value ) {
-                                  //  if ($key=='' ||$value==''){
-                                    //    ?>
-                                        <a href="#" class="img-circle"><span><?php echo $category[0]->cat_name; ?></span></a>
+                                 $category = get_the_category();
+                                  $custom_fields = get_post_custom($post->ID);
+                                  $my_custom_field = $custom_fields['social-network'];
+                                 if($my_custom_field==NULL){
+                                    ?>
+                                     <a href="#" class="img-circle"><span><?php echo $category[0]->cat_name; ?></span></a>
                                      <?php
-                                   // }
-                                    //else{
-                                      //  ?>
-
-                                <!--a href="<?php// echo $value; ?> " class="img-circle"><span><?php //echo $category[0]->cat_name; ?></span></a-->
+                                 }
+                                  else
+                                  foreach ( $my_custom_field as $key => $value ) {
+                                  ?>
+                                        <a href="<?php echo $value;?>" class="img-circle"><span><?php echo $category[0]->cat_name; ?></span></a>
                                 <?php
-                               //     }
-                              // }
+                                   }
                                 $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
                                 ?>
                                 <img data-type="mText" src="<?php echo $url;?>" class="img-responsive img-circle" alt="//" />
