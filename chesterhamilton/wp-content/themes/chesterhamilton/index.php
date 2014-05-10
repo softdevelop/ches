@@ -15,64 +15,72 @@
  */
 
 get_header(); ?>
+<script>
+                $(document).ready(function(){
+                    $('#about-us>div>div>div>div>div:first-child').addClass("active");
+                    $('#blog>div>div>div>div>div:first-child').addClass("active");
+                    $('#projects>div>div>div>div:first-child').addClass("active");
+                    $('.carousel-indicators>li:first-child').addClass("active");
+                    $('#top-slide>div>div>div:first-child').addClass("active");
+                });
+            </script>
 <!--top-slide-->
-<section id="top-slide" class="np">
-    <!-- carousel -->
+<section id="top-slide" class="np"> 
+    <!-- carousel -->           
     <div id="carousel-example-generic" class="carousel slide generic-carousel" data-ride="carousel" data-interval="7000000">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner text-center">
-            <div class="item active" >
-                <img class="bg-img img-responsive" src="<?php echo get_template_directory_uri();?>/img/slider/img-slider-top-1.jpg" alt="image of slider" />
-                <div class="container">
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner text-center">
+        <?php
+            global $post;
+            $args = array('numberposts'=>100, 'category'=>17);
+            $page_id = 15;
+            $custom_posts = get_posts($args);
+            foreach($custom_posts as $post):setup_postdata($post);?>
+                <div class="item" >
+                     <?php
+                        $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                     ?>
+                  <img class="bg-img img-responsive" src="<?php echo $url;?>" alt="image of slider" />
+                  <div class="container">
                     <div class="text-slide">
-                        <h2>BUILDING EXCELLENCE</h2>
-                        <h3>Architecture</h3>
-                        <p>LiCENSED</p>
+                        <h2 ><?php the_title();?></h2>
+                        <?php the_content();?>
                     </div>
+                  </div>
                 </div>
-            </div>
-            <div class="item">
-                <img class="bg-img img-responsive" src="<?php echo get_template_directory_uri();?>/img/slider/img-slider-top-2.jpg" alt="image of slider" />
-                <div class="container">
-                    <div class="text-slide">
-                        <h2>BUILDING EXCELLENCE</h2>
-                        <h3>Architecture</h3>
-                        <p>LiCENSED</p>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img class="bg-img img-responsive" src="<?php echo get_template_directory_uri();?>/img/slider/img-slider-top-3.jpg" alt="image of slider" />
-                <div class="container">
-                    <div class="text-slide">
-                        <h2>BUILDING EXCELLENCE</h2>
-                        <h3>Architecture</h3>
-                        <p>LiCENSED</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end Wrapper for slides -->
-        <div class="controls">
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                <i class="icon-up-open"></i>
-            </a>
-            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <i class="icon-down-open"></i>
-            </a>
-            <div class="clearThis"></div>
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"><img src="<?php echo get_template_directory_uri();?>/img/slider/thumb-1.jpg" alt="//" /></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"><img src="<?php echo get_template_directory_uri();?>/img/slider/thumb-2.jpg" alt="//" /></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"><img src="<?php echo get_template_directory_uri();?>/img/slider/thumb-3.jpg" alt="//" /></li>
-            </ol>
-        </div>
-    </div><!-- end carousel -->
+            <?php endforeach; wp_reset_postdata(); ?>
+      </div>
+      <!-- end Wrapper for slides -->
+      <div class="controls">
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <i class="icon-up-open"></i>      
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <i class="icon-down-open"></i>
+          </a>
+          <div class="clearThis"></div>
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <?php
+                global $post;
+                $args = array('numberposts'=>100, 'category'=>17);
+                $page_id = 15;
+                $custom_posts = get_posts($args);
+                $i=0;
+            foreach($custom_posts as $post):setup_postdata($post);?>
+            <?php
+                $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                
+             ?>
+             <li data-target="#carousel-example-generic" data-slide-to="<?php echo $i;?>" class="active"><img src="<?php echo $url;?>" alt="//" /></li>
+             <?php ++$i; endforeach; wp_reset_postdata(); ?>
+          </ol>
+      </div>
+    </div><!-- end carousel -->   
     <a href="#about-us" class="scroll-lnk anchor"></a>
-</section>
-<!--End top-slide-->
+    </section>
+    <!--End top-slide-->
 
 <!-- About us -->
 <section id="about-us">
@@ -91,14 +99,7 @@ get_header(); ?>
                     <?php endforeach; wp_reset_postdata(); ?>
                 </ul>
             </div><!-- .col -->
-            <script>
-                $(document).ready(function(){
-                   $('#about-us>div>div>div>div>div:first-child').addClass("active");
-                   $('#blog>div>div>div>div>div:first-child').addClass("active");
-                   $('#projects>div>div>div>div:first-child').addClass("active");
-                    $('.carousel-indicators>li:first-child').addClass("active");
-                });
-            </script>
+            
             <div class="col-sm-6 text-center">
                 <!-- Tab panes -->
                 <div class="tab-content">

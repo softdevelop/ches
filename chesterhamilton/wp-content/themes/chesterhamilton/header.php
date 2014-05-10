@@ -23,6 +23,7 @@
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
 <head>
+
     <!-- Define Charset -->
     <meta charset="utf-8">
 
@@ -45,7 +46,7 @@
     <link href="<?php echo get_template_directory_uri();?>/css/font/fontello.css" rel="stylesheet" type="text/css" media="screen" />
 
     <link href="<?php echo get_template_directory_uri();?>/js/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo get_template_directory_uri();?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    
     <link href="<?php echo get_template_directory_uri();?>/css/media-queries.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!--[if IE 8]><link href="../css/ie8.css" rel="stylesheet" type="text/css" media="screen" /><![endif]-->
@@ -61,7 +62,8 @@
             $("#menu-menu>li>a").addClass("anchor");
         });
     </script>
-
+    <?php  wp_head();?>
+    <link href="<?php echo get_template_directory_uri();?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body <?php body_class(); ?>>
