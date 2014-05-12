@@ -144,7 +144,7 @@ $comment = get_comment($comment_id);
  */
 do_action( 'set_comment_cookies', $comment, $user );
 
-$location = empty($_POST['redirect_to']) ? get_comment_link($comment_id) : $_POST['redirect_to'] . '#comment-' . $comment_id;
+$location = 'http://chesterhamilton.me/#comment-' . $comment_id;
 
 /**
  * Filter the location URI to send the commenter after posting.

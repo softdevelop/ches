@@ -1,16 +1,19 @@
 <?php
+/**
+ * Template Name: Home Page
+ */
 
 get_header(); ?>
 <script>
-    $(document).ready(function(){
-        $('#about-us>div>div>div>div>div:first-child').addClass("active");
-        $('#blog>div>div>div>div>div:first-child').addClass("active");
-        $('#projects>div>div>div>div:first-child').addClass("active");
-        $('.carousel-indicators>li:first-child').addClass("active");
-        $('#top-slide>div>div>div:first-child').addClass("active");
-        $('#slide-sec>div>div>div:first-child').addClass("active");
-    });
-</script>
+                $(document).ready(function(){
+                    $('#about-us>div>div>div>div>div:first-child').addClass("active");
+                    $('#blog>div>div>div>div>div:first-child').addClass("active");
+                    $('#projects>div>div>div>div:first-child').addClass("active");
+                    $('.carousel-indicators>li:first-child').addClass("active");
+                    $('#top-slide>div>div>div:first-child').addClass("active");
+                    $('#slide-sec>div>div>div:first-child').addClass("active");
+                });
+            </script>
 <!--top-slide-->
 <section id="top-slide" class="np"> 
     <!-- carousel -->           
@@ -328,9 +331,7 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                                 ?>
                             </div>
                             <div class="comments">
-                                <div class="add-comments">
-                                    <?php comment_form(); ?> 
-                                </div>                               
+                                <?php comment_form(); ?>                                
                             </div>    
                             <!--div class="comments">
                                 <div class="single">
