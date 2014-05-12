@@ -319,7 +319,6 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                                <?php
                                     // Start the Loop.
                                     while ( have_posts() ) : the_post();
-
                                         // If comments are open or we have at least one comment, load up the comment template.
                                         if ( comments_open() || get_comments_number() ) { 
                                             comments_template();
@@ -329,64 +328,9 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                             </div>
                             <div class="comments">
                                 <div class="add-comments">
-                                    <?php comment_form(); ?> 
+                                   
                                 </div>                               
-                            </div>    
-                            <!--div class="comments">
-                                <div class="single">
-                                    <img src="<?php echo get_template_directory_uri();?>/img/avatar-01.jpg" alt="" class="avatar"/>
-                                    <div class="cont">
-                                        <a href="#" class="lnk-reply">Reply</a>
-                                        <h5>Dave Jenkins says:</h5>
-                                        <h6>September 5, 2013 @ 4:58 am</h6>
-                                        <p>ollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,  lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                        </p>
-                                    </div>
-                                </dVViv>
-                                <div class="single">
-                                    <img src="<?php echo get_template_directory_uri();?>/img/avatar-02.jpg" alt="" class="avatar"/>
-                                    <div class="cont">
-                                        <a href="#" class="lnk-reply">Reply</a>
-                                        <h5>Dave Jenkins says:</h5>
-                                        <h6>September 5, 2013 @ 4:58 am</h6>
-                                        <p>ollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,  lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="add-comments">
-
-                                    <form action="http://constructors.mustachethemes.com/index_submit" method="get" accept-charset="utf-8">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input name="name" type="text" class="form-control" placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label >Email</label>
-                                                    <input name="email" type="email" class="form-control" placeholder="Email">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea name="message" class="form-control" rows="5" placeholder="Message"> </textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12 clearfix">
-                                                <button class="btn btn-default pull-right">SEND</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!-- end comments -->
-
+                            </div>                            
                         </div>
 
                     </div><!-- /.modal-content -->

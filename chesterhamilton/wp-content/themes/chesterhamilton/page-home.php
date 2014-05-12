@@ -2,7 +2,6 @@
 /**
  * Template Name: Home Page
  */
-
 get_header(); ?>
 <script>
                 $(document).ready(function(){

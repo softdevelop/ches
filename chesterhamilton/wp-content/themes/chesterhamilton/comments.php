@@ -34,7 +34,6 @@ if ( post_password_required() ) {
 		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'twentyfourteen' ) ); ?></div>
 	</nav><!-- #comment-nav-above -->
 	<?php endif; // Check for comment navigation. ?>
-
 	<ol class="comment-list">
 		<?php
 			wp_list_comments( array(
