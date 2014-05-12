@@ -20,7 +20,30 @@
 			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
+	<script src="<?php echo get_template_directory_uri();?>//js/modernizr.custom.js"></script>
 
+<!-- jquery-->
+
+<script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
+<script>window.jQuery || document.write("<script src=\"/js/jquery.min.js\"")</script>
+
+<!-- Bootstrap-->
+<script src="<?php echo get_template_directory_uri();?>//js/bootstrap.js"></script>
+
+<!-- easing -->
+<script src="<?php echo get_template_directory_uri();?>//js/jquery.easing.1.3.js" type="text/javascript"></script>
+
+<!-- UItoTop plugin -->
+<script src="<?php echo get_template_directory_uri();?>//js/gototop/jquery.ui.totop.js" type="text/javascript"></script>
+
+<!-- fancybox -->
+<script src="<?php echo get_template_directory_uri();?>//js/fancy/jquery.fancybox.js" type="text/javascript"></script>
+
+<!-- team -->
+<script src="<?php echo get_template_directory_uri();?>//js/owl-carousel/owl.carousel.js"></script>
+
+<!-- Custom js-->
+<script src="<?php echo get_template_directory_uri();?>//js/jquery-func.js"></script>
 	<?php wp_footer(); ?>
 </body>
 </html>

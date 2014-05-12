@@ -36,10 +36,12 @@
     <!-- Page Description and Author -->
     <meta name="description" content="Constructors - One Page Architecture HTML Theme">
     <meta name="author" content="Mustache Themes">
-
+       <script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
+       
+    <!-- modernizr-->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if IE 8]><script src="<?php echo get_template_directory_uri();?>/js/html5shiv.js"></script><![endif]-->
-    <script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
+    
     <link href="<?php echo get_template_directory_uri();?>/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
 
     <!--[if IE 7 ]><link href="<?php echo get_template_directory_uri();?>/css/font/fontello-ie7.css" rel="stylesheet" type="text/css" media="screen" /><![endif]-->
@@ -62,8 +64,10 @@
             $("#menu-menu>li>a").addClass("anchor");
         });
     </script>
-   
-    
+   <!-- modernizr-->
+
+<!-- ======================= JQuery libs =============================== -->
+   <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
