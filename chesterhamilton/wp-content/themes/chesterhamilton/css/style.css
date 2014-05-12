@@ -1073,3 +1073,14 @@ footer p {
 	text-decoration: none;
 
 }
+span.wpcf7-not-valid-tip{
+	font-size: 15px;
+	color: lightcoral;
+}
+div.wpcf7-validation-errors{
+	font-size: 13px;
+	color: lightcoral;
+}
+.screen-reader-response{
+	color: lightgray;
+}

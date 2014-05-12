@@ -22,6 +22,7 @@ get_header(); ?>
                     $('#projects>div>div>div>div:first-child').addClass("active");
                     $('.carousel-indicators>li:first-child').addClass("active");
                     $('#top-slide>div>div>div:first-child').addClass("active");
+                    $('#slide-sec>div>div>div:first-child').addClass("active");
                 });
             </script>
 <!--top-slide-->
@@ -175,7 +176,7 @@ get_header(); ?>
                         <?php
                         $category = get_the_category();
                         ?>
-                        <h2> <?php echo $category[0]->cat_name; ?></h2>
+                        <h2><?php echo $category[0]->cat_name; ?></h2>
                         <p><?php the_content();?></p>
                     </div>
 
@@ -184,43 +185,67 @@ get_header(); ?>
 </section>
 <!-- end services -->
 
+<style type="text/css">
+    .sylecolor p span{
+        color: white!important;
+    }
+    #blogpop .post-item p span{
+        color: white!important;
+    }
+</style>
+<?php
+    global $post;
+    $args = array('numberposts'=>100, 'category'=>18);
+    $page_id = 15;
+    $custom_posts = get_posts($args);
 
+    foreach($custom_posts as $post):setup_postdata($post);
+?>
+<div id="modal-<?php echo $post->ID;?>" class="modal fade sylecolor">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">                                
+            <a href="#" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></a>
+            <h1><?php the_title();?></h1>
+          </div>
+          <div class="modal-body">
+            <div class="niceScroll">
+               <?php the_content();?>                            
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   <?php endforeach; wp_reset_postdata();?> 
 <!-- Project Slider -->
 <section id="slide-sec" class="np">
     <!-- carousel -->
     <div id="sec-carousel" class="carousel slide generic-carousel" data-ride="carousel" data-interval="7000000">
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="item active" >
+            <?php
+                global $post;
+                $args = array('numberposts'=>100, 'category'=>18);
+                $page_id = 15;
+                $custom_posts = get_posts($args);
+            
+                foreach($custom_posts as $post):setup_postdata($post);
+            ?>
+            <div class="item" >
                 <div class="container">
-                    <img class="bg-img img-responsive" src="<?php echo get_template_directory_uri();?>/img/projects-slider/01.jpg" alt="//" />
+                    <?php  
+                        $url= wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                    ?>
+                    <img class="bg-img img-responsive" src="<?php echo $url;?>" alt="//" />
                     <div class="cont">
-                        <h3>Residential Project</h3>
-                        <p>Integer urna tortor, mollis quis diam gravida, lobortis commodo leo. Nulla porta ante eu pretium tristique. Ut a quam libero. Aenean molestie turpis non turpis porttitor tincidunt. Nullam convallis et quam ut rutrum.</p>
-                        <div class="btn btn-default"><strong>More</strong></div>
+                        <h3><?php the_title();?></h3>
+                        <p><?php the_excerpt();?></p>
+                        <a href="#" data-toggle="modal" data-target="#modal-<?php echo $post->ID;?>" class="btn btn-default">More</a>
                     </div>
                 </div>
             </div>
-            <div class="item">
-                <div class="container">
-                    <img class="bg-img img-responsive" src="<?php echo get_template_directory_uri();?>/img/projects-slider/02.jpg" alt="//" />
-                    <div class="cont">
-                        <h3>Kitchen Reformation</h3>
-                        <p>Nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum</p>
-                        <div class="btn btn-default"><strong>More</strong></div>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="container">
-                    <img class="bg-img img-responsive" src="<?php echo get_template_directory_uri();?>/img/projects-slider/03.jpg" alt="//" />
-                    <div class="cont">
-                        <h3>Bedroom Design</h3>
-                        <p>Pellentesque molestie porta mauris, in volutpat lacus commodo in. Proin vestibulum enim imperdiet eros aliquet, eget convallis augue pharetrin vestibulum enim imperdiet eros aliquet, eget convallis augue pharetra.</p>
-                        <div class="btn btn-default"><strong>More</strong></div>
-                    </div>
-                </div>
-            </div>
+            
+        <?php endforeach; wp_reset_postdata();?>
         </div>
         <!-- end Wrapper for slides -->
         <div class="controls">
@@ -234,9 +259,16 @@ get_header(); ?>
             <div class="clearThis"></div>
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#sec-carousel" data-slide-to="0" class="active"><img src="<?php echo get_template_directory_uri();?>/img/projects-slider/thumbnail-01.jpg" alt="//" /></li>
-                <li data-target="#sec-carousel" data-slide-to="1"><img src="<?php echo get_template_directory_uri();?>/img/projects-slider/thumbnail-02.jpg" alt="//" /></li>
-                <li data-target="#sec-carousel" data-slide-to="2"><img src="<?php echo get_template_directory_uri();?>/img/projects-slider/thumbnail-03.jpg" alt="//" /></li>
+                <?php
+                    global $post;
+                    $args = array('numberposts'=>100,'category'=>18);
+                    $custom_posts = get_posts($args);
+                    $i=0;
+                    foreach ($custom_posts as $post):setup_postdata($post);
+                        $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
+                ?>
+                <li data-target="#sec-carousel" data-slide-to="<?php echo $i;?>" ><img src="<?php echo $url;?>" alt="//" /></li>
+                <?php ++$i; endforeach; wp_reset_postdata();?>
             </ol>
         </div>
     </div><!-- end carousel -->
@@ -279,26 +311,28 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
             </div>
             <p><?php the_excerpt();?></p>
 
-            <a href="#" data-toggle="modal" data-target="#blog-1" class="btn btn-default">More</a>
+            <a href="#" data-toggle="modal" data-target="#blog-<?php echo $post->ID;?>" class="btn btn-default">More</a>
             <!-- modal -->
             <div id="blog-<?php echo $post->ID;?>" class="modal post fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <a href="#" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove"></span></a>
-                        <div class="modal-body">
+                        <div class="modal-body" id="blogpop">
 
                             <div class="top-info">
-                                <p>Posted by Nicholas Santiago on September 5th » 9 Comments</p>
+                                <p>Posted by <?php the_author();?> on <?php the_date();?> » <?php echo get_comment_pages_count();?> Comments</p>
                             </div>
 
                             <div class="post-item">
-                                <h3>New Modern Chair</h3>
-                                <h4 class="under-dot">Architectural design</h4>
-                                <p>This is Photoshop's version Ipsum. Proin gravida nibh vel velit r a Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequatinor ipsum, nec sagittis sem nibh id elit. Odio sit amet nibh vulpe cursus  Premier Corp mauris. Morbi accumsan ipsum velit. Nam sllus accumsan ipsum en esora cano buenes eso vulpe carequis neque. Suspendisse in orci enim.</p>
-                                <p class="count">4 Comments</p>
+                                <h3><?php the_title();?></h3>
+                                <h4 class="under-dot"><?php  echo $category[0]->cat_name;?></h4>
+                                <p><?php the_content(); ?></p>
+                                <p class="count"><?php echo get_comment_pages_count();?> Comments</p>
                             </div>
-
                             <div class="comments">
+                                <?php comment_form(); ?>                                
+                            </div>    
+                            <!--div class="comments">
                                 <div class="single">
                                     <img src="<?php echo get_template_directory_uri();?>/img/avatar-01.jpg" alt="" class="avatar"/>
                                     <div class="cont">
@@ -308,7 +342,7 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                                         <p>ollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,  lorem quis bibendum auctor, nisi elit consequat ipsum,
                                         </p>
                                     </div>
-                                </div>
+                                </dVViv>
                                 <div class="single">
                                     <img src="<?php echo get_template_directory_uri();?>/img/avatar-02.jpg" alt="" class="avatar"/>
                                     <div class="cont">
