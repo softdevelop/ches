@@ -1067,8 +1067,9 @@ function wp_comment_form_unfiltered_html_nonce() {
  *                                  Default false.
  * @return null Returns null if no comments appear.
  */
-function comments_template( $file = '/comments.php', $separate_comments = false ) {
-	global $wp_query, $withcomments, $post, $wpdb, $id, $comment, $user_login, $user_ID, $user_identity, $overridden_cpage;
+function comments_template( $post, $file = '/comments.php', $separate_comments = false ) {
+	
+	global $wp_query, $withcomments, $wpdb, $id, $comment, $user_login, $user_ID, $user_identity, $overridden_cpage;
 
 	if ( !(is_single() || is_page() || $withcomments) || empty($post) )
 		return;
@@ -2037,7 +2038,7 @@ function comment_form( $args = array(), $post_id = null ) {
 	if ( null === $post_id )
 		$post_id = get_the_ID();
 	else
-		$id = $post_id;
+		$id = $post_id;	
 
 	$commenter = wp_get_current_commenter();
 	$user = wp_get_current_user();
@@ -2054,7 +2055,7 @@ function comment_form( $args = array(), $post_id = null ) {
 		'author' => '<div class="row">' .'<div class="col-sm-6">'.'<div class="form-group">'.  '<label for="name" style="color:white;"> ' . __( 'Name' ).( $req ? ' <span class="required">*</span>' : '' ).'</label> '.
 		            '<input id="author" placeholder="Name" name="author" type="text" value="" class="form-control"' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />' .'</div></div>',
 		'email'  => '<div class="col-sm-6">'.'<div class="form-group">'. '<label for="email">' . __( 'Email' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
-		            '<input id="email" placeholder="Email" name="email" class="form-control"' . ( $html5 ? 'type="email"' : 'type="text" ' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /> </div></div></div>',
+		            '<input id="email" placeholder="Email" name="email" class="form-control"' . ( $html5 ? 'type="email"' : 'type="text" ' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' /> <input type="hidden" name="is_submited" value="1" /></div></div></div>',
 		//'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label> ' .
 		 //           '<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
 	);

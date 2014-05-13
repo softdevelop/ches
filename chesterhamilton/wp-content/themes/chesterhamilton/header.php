@@ -36,8 +36,10 @@
     <!-- Page Description and Author -->
     <meta name="description" content="Constructors - One Page Architecture HTML Theme">
     <meta name="author" content="Mustache Themes">
-       <script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
-       
+    <!-- jquery-->
+    
+    <script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
+    <script>window.jQuery || document.write("<script src=\"js/jquery.min.js\"")</script>   
     <!-- modernizr-->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if IE 8]><script src="<?php echo get_template_directory_uri();?>/js/html5shiv.js"></script><![endif]-->
@@ -59,14 +61,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.html">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.html">
     <link rel="shortcut icon" href="assets/ico/favicon.html">
-    <script>
-        $(document).ready(function(){
-            $("#menu-menu>li>a").addClass("anchor");
-        });
-    </script>
+   
    <!-- modernizr-->
 <!-- ======================= JQuery libs =============================== -->
- 
 </head>
 
 <body <?php body_class(); ?>>

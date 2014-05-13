@@ -2,13 +2,13 @@
 
 get_header(); ?>
 <script>
-    $(document).ready(function(){
-        $('#about-us>div>div>div>div>div:first-child').addClass("active");
-        $('#blog>div>div>div>div>div:first-child').addClass("active");
-        $('#projects>div>div>div>div:first-child').addClass("active");
-        $('.carousel-indicators>li:first-child').addClass("active");
-        $('#top-slide>div>div>div:first-child').addClass("active");
-        $('#slide-sec>div>div>div:first-child').addClass("active");
+    jQuery(document).ready(function(){
+        jQuery('#about-us>div>div>div>div>div:first-child').addClass("active");
+        jQuery('#blog>div>div>div>div>div:first-child').addClass("active");
+        jQuery('#projects>div>div>div>div:first-child').addClass("active");
+        jQuery('.carousel-indicators>li:first-child').addClass("active");
+        jQuery('#top-slide>div>div>div:first-child').addClass("active");
+        jQuery('#slide-sec>div>div>div:first-child').addClass("active");
     });
 </script>
 <!--top-slide-->

@@ -18,7 +18,8 @@ require( dirname(__FILE__) . '/wp-load.php' );
 nocache_headers();
 
 $comment_post_ID = isset($_POST['comment_post_ID']) ? (int) $_POST['comment_post_ID'] : 0;
-
+$_SESSION['comment_post_id'] = $comment_post_ID;
+$_SESSION['is_submited'] = isset($_POST['is_submited']) ? (int) $_POST['is_submited'] : 0;
 $post = get_post($comment_post_ID);
 
 if ( empty( $post->comment_status ) ) {
@@ -144,8 +145,8 @@ $comment = get_comment($comment_id);
  */
 do_action( 'set_comment_cookies', $comment, $user );
 
-$location = 'http://chesterhamilton.me/#comment-' . $comment_id;
-
+// $location = empty($_POST['redirect_to']) ? get_comment_link($comment_id) : $_POST['redirect_to'] . '#comment-' . $comment_id;
+$location = 'http://chesterhamilton.me/';
 /**
  * Filter the location URI to send the commenter after posting.
  *

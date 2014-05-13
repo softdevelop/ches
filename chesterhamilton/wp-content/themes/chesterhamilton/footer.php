@@ -6,38 +6,36 @@
     </div>
 </footer>
 <!--End Footer-->
+<!-- ======================= JQuery libs =============================== -->  
 
+		<!-- modernizr-->
+		<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.js"></script>
 
+		<!-- Bootstrap-->
+		<script src="<?php echo get_template_directory_uri();?>/js/bootstrap.js"></script>
 
-<!-- ======================= JQuery libs =============================== -->
+		<!-- easing -->
+		<script src="<?php echo get_template_directory_uri();?>/js/jquery.easing.1.3.js" type="text/javascript"></script>
 
-<!-- modernizr-->
-<script src="<?php echo get_template_directory_uri();?>//js/modernizr.custom.js"></script>
+		<!-- UItoTop plugin -->
+		<script src="<?php echo get_template_directory_uri();?>/js/gototop/jquery.ui.totop.js" type="text/javascript"></script>
 
-<!-- jquery-->
+		<!-- fancybox -->
+		<script src="<?php echo get_template_directory_uri();?>/js/fancy/jquery.fancybox.js" type="text/javascript"></script>
 
-<script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
-<script>window.jQuery || document.write("<script src=\"/js/jquery.min.js\"")</script>
+		<!-- team -->
+		<script src="<?php echo get_template_directory_uri();?>/js/owl-carousel/owl.carousel.js"></script>
 
-<!-- Bootstrap-->
-<script src="<?php echo get_template_directory_uri();?>/js/bootstrap.js"></script>
+		<!-- Custom js-->
+		<script src="<?php echo get_template_directory_uri();?>/js/jquery-func.js"></script>
 
-<!-- easing -->
-<script src="<?php echo get_template_directory_uri();?>/js/jquery.easing.1.3.js" type="text/javascript"></script>
+		<script>
+	        jQuery(document).ready(function(){
+	            jQuery("#menu-menu>li>a").addClass("anchor");
+	        });
+	    </script>
 
-<!-- UItoTop plugin -->
-<script src="<?php echo get_template_directory_uri();?>/js/gototop/jquery.ui.totop.js" type="text/javascript"></script>
-
-<!-- fancybox -->
-<script src="<?php echo get_template_directory_uri();?>/js/fancy/jquery.fancybox.js" type="text/javascript"></script>
-
-<!-- team -->
-<script src="<?php echo get_template_directory_uri();?>/js/owl-carousel/owl.carousel.js"></script>
-
-<!-- Custom js-->
-<script src="<?php echo get_template_directory_uri();?>/js/jquery-func.js"></script>
-
-<!-- ======================= End JQuery libs =========================== -->
+	<!-- ======================= End JQuery libs =========================== --> 
 <?php wp_footer(); ?>
 
 </body>

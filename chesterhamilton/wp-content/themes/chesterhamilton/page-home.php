@@ -4,13 +4,13 @@
  */
 get_header(); ?>
 <script>
-                $(document).ready(function(){
-                    $('#about-us>div>div>div>div>div:first-child').addClass("active");
-                    $('#blog>div>div>div>div>div:first-child').addClass("active");
-                    $('#projects>div>div>div>div:first-child').addClass("active");
-                    $('.carousel-indicators>li:first-child').addClass("active");
-                    $('#top-slide>div>div>div:first-child').addClass("active");
-                    $('#slide-sec>div>div>div:first-child').addClass("active");
+                jQuery(document).ready(function(){
+                    jQuery('#about-us>div>div>div>div>div:first-child').addClass("active");
+                    jQuery('#blog>div>div>div>div>div:first-child').addClass("active");
+                    jQuery('#projects>div>div>div>div:first-child').addClass("active");
+                    jQuery('.carousel-indicators>li:first-child').addClass("active");
+                    jQuery('#top-slide>div>div>div:first-child').addClass("active");
+                    jQuery('#slide-sec>div>div>div:first-child').addClass("active");
                 });
             </script>
 <!--top-slide-->
@@ -299,8 +299,14 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
             </div>
             <p><?php the_excerpt();?></p>
 
-            <a href="#" data-toggle="modal" data-target="#blog-<?php echo $post->ID;?>" class="btn btn-default">More</a>
+            <a id="<?php echo $post->ID;?>" href="#" data-toggle="modal" data-target="#blog-<?php echo $post->ID;?>" class="btn btn-default">More</a>
             <!-- modal -->
+            <?php 
+                if(isset($_SESSION['is_submited']) && $_SESSION['is_submited'] == 1 && isset($_SESSION['comment_post_id']) && $_SESSION['comment_post_id'] == $post->ID )
+                {
+                    echo '<script type="text/javascript">jQuery(document).ready(function($){$("#blog-' . $post->ID . '").modal();$("div[id^=post-]").removeClass("active");$("#post-' . $post->ID . '").addClass("active")})</script>';
+                }
+            ?>
             <div id="blog-<?php echo $post->ID;?>" class="modal post fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -319,74 +325,12 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                             </div>
                             <div class="content-comment">
                                <?php
-                                    // Start the Loop.
-                                    while ( have_posts() ) : the_post();
-
-                                        // If comments are open or we have at least one comment, load up the comment template.
-                                        if ( comments_open() || get_comments_number() ) { 
-                                            comments_template();
-                                        }
-                                    endwhile;
+                                    // If comments are open or we have at least one comment, load up the comment template.
+                                    if ( comments_open() || get_comments_number() ) { 
+                                        comments_template( $post );
+                                    }
                                 ?>
                             </div>
-                            <div class="comments">
-                                <?php comment_form(); ?>                                
-                            </div>    
-                            <!--div class="comments">
-                                <div class="single">
-                                    <img src="<?php echo get_template_directory_uri();?>/img/avatar-01.jpg" alt="" class="avatar"/>
-                                    <div class="cont">
-                                        <a href="#" class="lnk-reply">Reply</a>
-                                        <h5>Dave Jenkins says:</h5>
-                                        <h6>September 5, 2013 @ 4:58 am</h6>
-                                        <p>ollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,  lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                        </p>
-                                    </div>
-                                </dVViv>
-                                <div class="single">
-                                    <img src="<?php echo get_template_directory_uri();?>/img/avatar-02.jpg" alt="" class="avatar"/>
-                                    <div class="cont">
-                                        <a href="#" class="lnk-reply">Reply</a>
-                                        <h5>Dave Jenkins says:</h5>
-                                        <h6>September 5, 2013 @ 4:58 am</h6>
-                                        <p>ollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum,  lorem quis bibendum auctor, nisi elit consequat ipsum,
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="add-comments">
-
-                                    <form action="http://constructors.mustachethemes.com/index_submit" method="get" accept-charset="utf-8">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label>Name</label>
-                                                    <input name="name" type="text" class="form-control" placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label >Email</label>
-                                                    <input name="email" type="email" class="form-control" placeholder="Email">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="form-group">
-                                                    <label>Message</label>
-                                                    <textarea name="message" class="form-control" rows="5" placeholder="Message"> </textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-12 clearfix">
-                                                <button class="btn btn-default pull-right">SEND</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!-- end comments -->
-
                         </div>
 
                     </div><!-- /.modal-content -->
@@ -397,7 +341,13 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
         </div>
     </div>
 </div>
-<?php endforeach; wp_reset_postdata();?>
+<?php 
+
+    endforeach; wp_reset_postdata(); 
+    // unset session after checked
+    unset($_SESSION['comment_post_id']);
+    unset($_SESSION['is_submited']);
+?>
 
 </div>
 </div><!-- .col -->
