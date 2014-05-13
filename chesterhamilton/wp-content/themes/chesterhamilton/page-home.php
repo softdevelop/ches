@@ -84,7 +84,7 @@ get_header(); ?>
                     $page_id = 15;
                     $custom_posts = get_posts($args);
                     foreach($custom_posts as $post):setup_postdata($post);?>
-                        <li><a href="#<?php $str_title = the_title(); str_replace(' ', '', $str_title);?>" data-toggle="tab"><?php the_title();?></a></li>
+                        <li><a href="#<?php $str_title = get_the_title($post->ID);echo str_replace(' ', '', $str_title);?>" data-toggle="tab"><?php the_title();?></a></li>
                     <?php endforeach; wp_reset_postdata(); ?>
                 </ul>
             </div><!-- .col -->
@@ -98,7 +98,7 @@ get_header(); ?>
                     $page_id = 15;
                     $custom_posts = get_posts($args);
                     foreach($custom_posts as $post):setup_postdata($post);?>
-                    <div class="tab-pane " id="<?php str_replace(' ', '', the_title());?>">
+                    <div class="tab-pane " id="<?php $str_title = get_the_title($post->ID); echo str_replace(' ', '', $str_title);?>">
                         <h1><small>OUR</small><?php the_title();?></h1>
                         <p class="text-left"><?php the_excerpt();?></p>
                         <a href="#" data-toggle="modal" data-target="#modal-<?php echo $post->ID;?>" class="btn btn-default btn-radius">
