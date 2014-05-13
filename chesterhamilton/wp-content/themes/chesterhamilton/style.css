@@ -1084,3 +1084,56 @@ div.wpcf7-validation-errors{
 .screen-reader-response{
 	color: lightgray;
 }
+
+/** BUNLEO 2014 05 13 Comment **/
+.comments-title 
+{
+	display: none;
+}
+
+ol.comment-list {
+	list-style: none;
+	padding: 0px;
+	border-top: 1px solid #363c46;
+}
+#blog .tab-pane img.avatar {
+	width: 60px;
+	height: 60px;
+	float: left;
+	margin-right: 25px;
+	border: none;
+}
+.fn, .says 
+{
+	font-family: 'Lato', sans-serif;
+	color: #596372;
+	font-size: 13px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-weight: 500;
+	line-height: 1.1;
+	display: inline-block;
+}	
+li.comment 
+{
+	border-bottom: 1px solid #363c46;
+	padding: 30px 0;
+}
+.comment-meta
+{
+	padding: 0px;
+	background: none;
+}
+
+.comment-metadata time {
+	color: #596372;
+	font-size: 11px;
+}
+.comment-reply-link 
+{
+	display: none;
+}
+.comment-edit-link 
+{
+	display: none;
+}

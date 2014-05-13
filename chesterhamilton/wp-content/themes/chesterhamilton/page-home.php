@@ -84,7 +84,7 @@ get_header(); ?>
                     $page_id = 15;
                     $custom_posts = get_posts($args);
                     foreach($custom_posts as $post):setup_postdata($post);?>
-                        <li><a href="#<?php the_title();?>" data-toggle="tab"><?php the_title();?></a></li>
+                        <li><a href="#<?php $str_title = the_title(); str_replace(' ', '', $str_title);?>" data-toggle="tab"><?php the_title();?></a></li>
                     <?php endforeach; wp_reset_postdata(); ?>
                 </ul>
             </div><!-- .col -->
@@ -98,7 +98,7 @@ get_header(); ?>
                     $page_id = 15;
                     $custom_posts = get_posts($args);
                     foreach($custom_posts as $post):setup_postdata($post);?>
-                    <div class="tab-pane " id="<?php the_title();?>">
+                    <div class="tab-pane " id="<?php str_replace(' ', '', the_title());?>">
                         <h1><small>OUR</small><?php the_title();?></h1>
                         <p class="text-left"><?php the_excerpt();?></p>
                         <a href="#" data-toggle="modal" data-target="#modal-<?php echo $post->ID;?>" class="btn btn-default btn-radius">
@@ -314,14 +314,14 @@ foreach($custom_posts  as $post) :setup_postdata($post);?>
                         <div class="modal-body" id="blogpop">
 
                             <div class="top-info">
-                                <p>Posted by <?php the_author();?> on <?php the_date();?> » <?php echo get_comment_pages_count();?> Comments</p>
+                                <p>Posted by <?php the_author();?> on <?php the_date();?> » <?php echo get_comments_number($post->ID);?> Comments</p>
                             </div>
 
                             <div class="post-item">
                                 <h3><?php the_title();?></h3>
                                 <h4 class="under-dot"><?php  echo $category[0]->cat_name;?></h4>
                                 <p><?php the_content(); ?></p>
-                                <p class="count"><?php echo get_comment_pages_count();?> Comments</p>
+                                <p class="count"><?php echo get_comments_number($post->ID);?> Comments</p>
                             </div>
                             <div class="content-comment">
                                <?php
