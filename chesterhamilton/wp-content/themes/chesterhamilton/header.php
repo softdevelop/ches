@@ -45,10 +45,10 @@
     <!--[if IE 8]><script src="<?php echo get_template_directory_uri();?>/js/html5shiv.js"></script><![endif]-->
     
     <link href="<?php echo get_template_directory_uri();?>/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
-
+    <link href="<?php echo get_template_directory_uri();?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
     <!--[if IE 7 ]><link href="<?php echo get_template_directory_uri();?>/css/font/fontello-ie7.css" rel="stylesheet" type="text/css" media="screen" /><![endif]-->
     <link href="<?php echo get_template_directory_uri();?>/css/font/fontello.css" rel="stylesheet" type="text/css" media="screen" />
-    <link href="<?php echo get_template_directory_uri();?>/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    
     <link href="<?php echo get_template_directory_uri();?>/js/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" media="screen" />
     
     <link href="<?php echo get_template_directory_uri();?>/css/media-queries.css" rel="stylesheet" type="text/css" media="screen" />
@@ -61,9 +61,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.html">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.html">
     <link rel="shortcut icon" href="assets/ico/favicon.html">
-   
-   <!-- modernizr-->
-<!-- ======================= JQuery libs =============================== -->
+
 </head>
 
 <body <?php body_class(); ?>>

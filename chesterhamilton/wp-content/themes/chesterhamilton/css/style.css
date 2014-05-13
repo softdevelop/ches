@@ -1084,6 +1084,46 @@ div.wpcf7-validation-errors{
 .screen-reader-response{
 	color: lightgray;
 }
-.ngg-galleryoverview{
-	padding-left: 2%;
+.row .ngg-galleryoverview{
+	max-width: 1170px;
+	width: 100%;
+}
+.ngg-galleryoverview .ngg-gallery-thumbnail-box{
+	width: 25%;
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: 0px;
+}
+.ngg-gallery-thumbnail-box .ngg-gallery-thumbnail{
+	position: relative;
+	margin-bottom: 30px;
+}
+.ngg-gallery-thumbnail-box  .ngg-gallery-thumbnail img{
+	background-color: transparent;
+	border: none;
+	margin: 0; 
+	padding: 0; 
+	min-width: 0;
+	width: 100%;
+	height: auto;
+	min-width: 100%;
+
+}
+.ngg-gallery-thumbnail-box  .ngg-gallery-thumbnail img:hover{
+	background-color: transparent;
+	border: none;
+}
+@media (max-width: 768px){
+	.ngg-galleryoverview .ngg-gallery-thumbnail-box{
+		width: 50%;
+		float: left;
+	}
+	.ngg-gallery-thumbnail-box .ngg-gallery-thumbnail{
+		max-width: 300px;
+		margin: 0 auto;
+		margin-bottom: 30px;
+		float: none;
+	}
 }
