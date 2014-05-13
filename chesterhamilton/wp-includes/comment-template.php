@@ -2072,7 +2072,7 @@ function comment_form( $args = array(), $post_id = null ) {
 	$fields = apply_filters( 'comment_form_default_fields', $fields );
 	$defaults = array(
 		'fields'               => $fields,
-		'comment_field'        => '<div class="row"><div class="col-sm-12"><div class="form-group">'  . ' <textarea id="comment" name="comment" cols="45" rows="5" placeholder="Message" class="form-control" aria-required="true"></textarea> </div></div></div>',
+		'comment_field'        => '<div class="row"><div class="col-sm-12"><div class="form-group">'  . ' <input type="hidden" name="is_submited" value="1" /><textarea id="comment" name="comment" cols="45" rows="5" placeholder="Message" class="form-control" aria-required="true"></textarea> </div></div></div>',
 		/** This filter is documented in wp-includes/link-template.php */
 		'must_log_in'          => '<p class="must-log-in">' . sprintf( __( 'You must be <a href="%s">logged in</a> to post a comment.' ), wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) ) . '</p>',
 		/** This filter is documented in wp-includes/link-template.php */
