@@ -61,8 +61,8 @@
     <link rel="shortcut icon" href="assets/ico/favicon.html">
 
     <script>
-        $(document).ready(function(){
-            $("#menu-menu>li>a").addClass("anchor");
+        jQuery(document).ready(function(){
+            jQuery("#menu-menu>li>a").addClass("anchor");
         });
 
     </script>
