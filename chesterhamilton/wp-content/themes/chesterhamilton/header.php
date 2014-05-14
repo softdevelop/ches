@@ -36,10 +36,8 @@
     <!-- Page Description and Author -->
     <meta name="description" content="Constructors - One Page Architecture HTML Theme">
     <meta name="author" content="Mustache Themes">
-    <!-- jquery-->
-    
     <script src="<?php echo get_template_directory_uri();?>/js/jquery.min.js"></script>
-    <script>window.jQuery || document.write("<script src=\"js/jquery.min.js\"")</script>   
+       
     <!-- modernizr-->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if IE 8]><script src="<?php echo get_template_directory_uri();?>/js/html5shiv.js"></script><![endif]-->
@@ -53,8 +51,6 @@
     
     <link href="<?php echo get_template_directory_uri();?>/css/media-queries.css" rel="stylesheet" type="text/css" media="screen" />
 
-    <link href="<?php echo get_template_directory_uri();?>/style.css" rel="stylesheet" type="text/css" media="screen" />
-
     <!--[if IE 8]><link href="../css/ie8.css" rel="stylesheet" type="text/css" media="screen" /><![endif]-->
 
     <!-- Fav and touch icons -->
@@ -63,7 +59,16 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.html">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.html">
     <link rel="shortcut icon" href="assets/ico/favicon.html">
-     <?php wp_head() ?>
+
+    <script>
+        $(document).ready(function(){
+            $("#menu-menu>li>a").addClass("anchor");
+        });
+
+    </script>
+   <!-- modernizr-->
+<!-- ======================= JQuery libs =============================== -->
+<?php wp_head();?>
 </head>
 
 <body <?php body_class(); ?>>

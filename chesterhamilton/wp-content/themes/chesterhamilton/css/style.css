@@ -1073,6 +1073,7 @@ footer p {
 	text-decoration: none;
 
 }
+
 span.wpcf7-not-valid-tip{
 	font-size: 15px;
 	color: lightcoral;
@@ -1114,6 +1115,15 @@ div.wpcf7-validation-errors{
 .ngg-gallery-thumbnail-box  .ngg-gallery-thumbnail img:hover{
 	background-color: transparent;
 	border: none;
+}
+@media (max-width: 1200px){
+	#slide-sec .generic-carousel .controls{
+	margin-right: 0!important;
+	}
+	#top-slide .generic-carousel .controls{
+		margin-right: -7px;
+		right: 48px;
+	}
 }
 @media (max-width: 768px){
 	.ngg-galleryoverview .ngg-gallery-thumbnail-box{

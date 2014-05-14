@@ -7,10 +7,11 @@
 </footer>
 <!--End Footer-->
 <!-- ======================= JQuery libs =============================== -->  
-
+		
 		<!-- modernizr-->
-		<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.js"></script>
 
+		<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.js"></script>
+		
 		<!-- Bootstrap-->
 		<script src="<?php echo get_template_directory_uri();?>/js/bootstrap.js"></script>
 
@@ -28,12 +29,8 @@
 
 		<!-- Custom js-->
 		<script src="<?php echo get_template_directory_uri();?>/js/jquery-func.js"></script>
+		
 
-		<script>
-	        jQuery(document).ready(function(){
-	            jQuery("#menu-menu>li>a").addClass("anchor");
-	        });
-	    </script>
 
 <?php wp_footer(); ?>
 

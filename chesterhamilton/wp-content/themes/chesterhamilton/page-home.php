@@ -118,7 +118,7 @@ get_header(); ?>
                                             <?php
                                                 $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) );
                                             ?>
-                                            <img src="<?php echo $url;?>" alt="//" class="sign pull-left" />
+                                            <img src="<?php echo $url;?>"  class="sign pull-left" />
                                         </div>
                                     </div>
 
